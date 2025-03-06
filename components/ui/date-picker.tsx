@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { format, getMonth, getYear, setMonth, setYear } from "date-fns";
-import { Calendar1Icon, CalendarDays, Calendar as CalendarIcon } from "lucide-react";
+import { CalendarDays} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
