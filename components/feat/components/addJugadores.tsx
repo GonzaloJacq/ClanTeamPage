@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
 
@@ -152,7 +152,7 @@ export function AddJugadorForm() {
               <FormField
                 control={form.control}
                 name="fechaNacimiento"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel>Fecha de nacimiento</FormLabel>
                     <FormControl>
@@ -169,7 +169,7 @@ export function AddJugadorForm() {
               <FormField
                 control={form.control}
                 name="economia.ultimoPago"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel>Último pago</FormLabel>
                     <FormControl>

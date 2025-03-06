@@ -28,7 +28,7 @@ type EstadoSalud = {
 
 export type HistorialPartidos = {
   id: number;
-  fecha: String;
+  fecha: string;
   contrincante: string;
   resultado: string;
   goleador?: string;

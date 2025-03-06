@@ -1,6 +1,7 @@
 // components/Header.tsx
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Instagram } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const Header = () => {
@@ -16,20 +17,20 @@ const Header = () => {
       <nav>
         <ul className="flex space-x-6 items-center">
           <li>
-            <a href="/" className="flex items-center gap-2 hover:text-gray-300">
+            <Link href="/" className="flex items-center gap-2 hover:text-gray-300">
               <Instagram />
               Instagram
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/about" className="hover:text-gray-300">
+            <Link href="/about" className="hover:text-gray-300">
               Acerca de
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/contact" className="hover:text-gray-300">
+            <Link href="/contact" className="hover:text-gray-300">
               Contacto
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

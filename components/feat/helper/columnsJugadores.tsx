@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { ArrowUpDown } from "lucide-react"; // Asegúrate de importar ArrowUpDown
 import { JugadorTable } from "./jugadores.type";
 import { ColumnDef } from "@tanstack/react-table";
 

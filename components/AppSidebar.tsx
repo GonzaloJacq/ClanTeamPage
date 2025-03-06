@@ -4,18 +4,13 @@ import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
-  Bot,
   Command,
   Frame,
   GalleryVerticalEnd,
-  Map,
-  PhoneOutgoing,
-  PictureInPicture,
   PictureInPicture2,
   PieChart,
   Settings2,
   SquareTerminal,
-  User,
   User2,
 } from "lucide-react";
 
