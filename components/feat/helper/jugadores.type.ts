@@ -1,15 +1,12 @@
 export type Jugador = {
   id: number;
   nombre: string;
-  edad: number;
-  equipo: string;
   posicion: string;
-  nacionalidad?: string;
   fechaNacimiento?: Date;
-  economia: Economia;
   partidosJugados: number;
   golesMarcados: number;
   asistencias: number;
+  economia: Economia;
   estadoSalud: EstadoSalud;
   disponibleParaPartidos: boolean;
 };
@@ -34,19 +31,6 @@ export type HistorialPartidos = {
   goleador?: string;
   asistidor?: string;
   lesionados?: string;
+  mvp?: Jugador;
 };
 
-export type JugadorTable = Pick<
-  Jugador,
-  | "nombre"
-  | "edad"
-  | "equipo"
-  | "posicion"
-  | "nacionalidad"
-  | "fechaNacimiento"
-  | "partidosJugados"
-  | "golesMarcados"
-  | "asistencias"
-  | "estadoSalud"
-  | "disponibleParaPartidos"
->;

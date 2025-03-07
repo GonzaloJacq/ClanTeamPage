@@ -25,10 +25,7 @@ export function AddJugadorForm() {
     resolver: zodResolver(JugadorSchema),
     defaultValues: {
       nombre: "",
-      edad: 18,
-      equipo: "",
       posicion: "",
-      nacionalidad: "",
       fechaNacimiento: undefined,
       economia: {
         ultimoPago: new Date(),
@@ -82,46 +79,6 @@ export function AddJugadorForm() {
                   </FormControl>
                   <FormDescription>
                     Introduce el nombre completo del jugador.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Edad */}
-            <FormField
-              control={form.control}
-              name="edad"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Edad</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="Edad"
-                      value={field.value !== undefined ? field.value : ""}
-                      onChange={(e) =>
-                        field.onChange(parseInt(e.target.value) || 0)
-                      }
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Equipo */}
-            <FormField
-              control={form.control}
-              name="equipo"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Equipo</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Nombre del equipo" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Introduce el equipo al que pertenece el jugador.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

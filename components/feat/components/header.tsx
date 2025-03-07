@@ -1,6 +1,5 @@
-// components/Header.tsx
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Instagram } from "lucide-react";
+import { InfoIcon, Instagram } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -22,8 +21,9 @@ const Header = () => {
               Instagram
             </Link>
           </li>
-          <li>
-            <Link href="/about" className="hover:text-gray-300">
+          <li >
+            <Link href="/dashboard" className=" flex items-center gap-2 hover:text-gray-300">
+            <InfoIcon />
               Acerca de
             </Link>
           </li>

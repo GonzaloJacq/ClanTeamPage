@@ -6,8 +6,6 @@ export const dataJugadores: Jugador[] = [
   {
     id: 1,
     nombre: "Juan Pérez",
-    edad: 22,
-    equipo: "FC Amateur",
     posicion: "Delantero",
     fechaNacimiento: new Date("1996-02-15"),
     economia: {
@@ -26,9 +24,7 @@ export const dataJugadores: Jugador[] = [
   {
     id: 2,
     nombre: "Carlos Rodríguez",
-    edad: 28,
-    fechaNacimiento: new Date("1996-02-15"),
-    equipo: "FC Amateur",
+    fechaNacimiento: new Date("1998-02-15"),
     posicion: "Centrocampista",
     economia: {
       ultimoPago: new Date("2025-01-30"),
@@ -46,9 +42,7 @@ export const dataJugadores: Jugador[] = [
   {
     id: 3,
     nombre: "Luis García",
-    edad: 19,
     fechaNacimiento: new Date("1996-02-15"),
-    equipo: "FC Amateur",
     posicion: "Defensa",
     economia: {
       ultimoPago: new Date("2025-01-10"),
@@ -68,9 +62,7 @@ export const dataJugadores: Jugador[] = [
   {
     id: 4,
     nombre: "Marta Fernández",
-    fechaNacimiento: new Date("1996-02-15"),
-    edad: 25,
-    equipo: "FC Amateur",
+    fechaNacimiento: new Date("1991-02-15"),
     posicion: "Portera",
     economia: {
       ultimoPago: new Date("2025-02-01"),
@@ -88,9 +80,7 @@ export const dataJugadores: Jugador[] = [
   {
     id: 5,
     nombre: "Andrés Sánchez",
-    fechaNacimiento: new Date("1996-02-15"),
-    edad: 30,
-    equipo: "FC Amateur",
+    fechaNacimiento: new Date("1992-02-15"),
     posicion: "Delantero",
     economia: {
       ultimoPago: new Date("2025-01-25"),
