@@ -1,0 +1,58 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Modelo Jugador
+model Jugador {
+  id                     String    @id @default(auto()) @map("_id") @db.ObjectId
+  nombre                 String
+  posicion               String
+  fechaNacimiento        DateTime?
+  partidosJugados        Int
+  golesMarcados          Int
+  asistencias            Int
+  economiaId             String   @db.ObjectId
+  economia               Economia @relation(fields: [economiaId], references: [id])
+  estadoSaludId          String   @db.ObjectId
+  estadoSalud            EstadoSalud @relation(fields: [estadoSaludId], references: [id])
+  disponibleParaPartidos Boolean
+  historialPartidos      HistorialPartidos[]
+}
+
+// Modelo Economia
+model Economia {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  ultimoPago  DateTime
+  deuda       Float
+  aFavor      Float
+  jugadores   Jugador[]
+}
+
+// Modelo EstadoSalud
+model EstadoSalud {
+  id                  String  @id @default(auto()) @map("_id") @db.ObjectId
+  lesionado           Boolean
+  tipoLesion          String?
+  tiempoRecuperacion  String?
+  jugadores           Jugador[]
+}
+
+// Modelo HistorialPartidos
+model HistorialPartidos {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  fecha         String
+  contrincante  String
+  resultado     String
+  goleador      String?  // Puede ser un ID de jugador si lo necesitas
+  asistidor     String?  // Puede ser un ID de jugador si lo necesitas
+  lesionados    String?  // Puede ser una lista de IDs de jugadores si lo necesitas
+  mvpId         String?  // Puede ser un ID de jugador si lo necesitas
+  mvp           Jugador? @relation(fields: [mvpId], references: [id])
+}

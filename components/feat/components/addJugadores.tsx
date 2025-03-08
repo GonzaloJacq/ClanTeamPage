@@ -26,7 +26,7 @@ export function AddJugadorForm() {
     defaultValues: {
       nombre: "",
       posicion: "",
-      fechaNacimiento: undefined,
+      fechaNacimiento: new Date(),
       economia: {
         ultimoPago: new Date(),
         deuda: 0,
@@ -47,14 +47,32 @@ export function AddJugadorForm() {
   function onSubmit(data: z.infer<typeof JugadorSchema>) {
     console.log("Datos a enviar:", data);
 
-    toast.success("¡Jugador agregado con éxito!", {
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-    console.log(form.formState.errors);
+    fetch("/api/jugadores", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          toast.success("¡Jugador agregado con éxito!", {
+            description: (
+              <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+                <code className="text-white">
+                  {JSON.stringify(data, null, 2)}
+                </code>
+              </pre>
+            ),
+          });
+        } else {
+          toast.error("Error al agregar jugador.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al enviar datos:", error);
+        toast.error("Error al enviar los datos.");
+      });
   }
 
   return (
@@ -67,6 +85,7 @@ export function AddJugadorForm() {
         >
           {/* Contenedor de dos columnas */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Nombre */}
             {/* Nombre */}
             <FormField
               control={form.control}
@@ -109,12 +128,15 @@ export function AddJugadorForm() {
               <FormField
                 control={form.control}
                 name="fechaNacimiento"
-                render={() => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Fecha de nacimiento</FormLabel>
                     <FormControl>
                       <div>
-                        <DatePicker />
+                        <DatePicker
+                          selected={field.value} 
+                          onChange={field.onChange} 
+                        />
                       </div>
                     </FormControl>
                     <FormMessage />
@@ -126,12 +148,15 @@ export function AddJugadorForm() {
               <FormField
                 control={form.control}
                 name="economia.ultimoPago"
-                render={() => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Último pago</FormLabel>
                     <FormControl>
                       <div>
-                        <DatePicker />
+                        <DatePicker
+                          selected={field.value}
+                          onChange={field.onChange}
+                        />
                       </div>
                     </FormControl>
                     <FormMessage />

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { format, getMonth, getYear, setMonth, setYear } from "date-fns";
-import { CalendarDays} from "lucide-react";
+import { CalendarDays } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -23,12 +23,16 @@ import {
 interface DatePickerProps {
   startYear?: number;
   endYear?: number;
+  selected?: Date | null;
+  onChange?: (date: Date | undefined) => void;
 }
 export function DatePicker({
   startYear = getYear(new Date()) - 100,
   endYear = getYear(new Date()) + 100,
+  selected, // Recibir el valor seleccionado
+  onChange, // Recibir el handler de cambio
 }: DatePickerProps) {
-  const [date, setDate] = React.useState<Date>(new Date());
+  const [date, setDate] = React.useState<Date>(selected || new Date()); // Usar el valor seleccionado
 
   const months = [
     "January",
@@ -52,16 +56,25 @@ export function DatePicker({
   const handleMonthChange = (month: string) => {
     const newDate = setMonth(date, months.indexOf(month));
     setDate(newDate);
+    if (onChange) {
+      onChange(newDate); 
+    }
   };
 
   const handleYearChange = (year: string) => {
     const newDate = setYear(date, parseInt(year));
     setDate(newDate);
+    if (onChange) {
+      onChange(newDate);
+    }
   };
 
   const handleSelect = (selectedData: Date | undefined) => {
     if (selectedData) {
       setDate(selectedData);
+      if (onChange) {
+        onChange(selectedData);
+      }
     }
   };
 
