@@ -50,9 +50,9 @@ model HistorialPartidos {
   fecha         String
   contrincante  String
   resultado     String
-  goleador      String?  // Puede ser un ID de jugador si lo necesitas
-  asistidor     String?  // Puede ser un ID de jugador si lo necesitas
-  lesionados    String?  // Puede ser una lista de IDs de jugadores si lo necesitas
-  mvpId         String?  // Puede ser un ID de jugador si lo necesitas
+  goleador      String?  
+  asistidor     String?  
+  lesionados    String?  
+  mvpId         String?  @db.ObjectId 
   mvp           Jugador? @relation(fields: [mvpId], references: [id])
 }
