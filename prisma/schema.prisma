@@ -19,12 +19,24 @@ model Post {
   authorId  String?
 }
 
-model User {
-  id            String       @default(cuid()) @id
-  name          String?
-  email         String?   @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  posts         Post[]
-  @@map(name: "users")
+// Modelo EstadoSalud
+model EstadoSalud {
+  id                  String  @id @default(auto()) @map("_id") @db.ObjectId
+  lesionado           Boolean
+  tipoLesion          String?
+  tiempoRecuperacion  String?
+  jugadores           Jugador[]
+}
+
+// Modelo HistorialPartidos
+model HistorialPartidos {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  fecha         String
+  contrincante  String
+  resultado     String
+  goleador      String?  
+  asistidor     String?  
+  lesionados    String?  
+  mvpId         String?  @db.ObjectId 
+  mvp           Jugador? @relation(fields: [mvpId], references: [id])
 }
